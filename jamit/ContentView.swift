@@ -8,17 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var audioRecorder =  AudioRecorder2()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .environmentObject( audioRecorder)
+            .tabItem {
+            VStack{
+            Text("Home")
+           Image(systemName:"house.fill")
+                    }
+            }
+            .tag(0)
+            
+         
+            ProfileView()
+                .environmentObject( audioRecorder)
+            .tabItem {
+            VStack{
+            Text("person")
+           Image(systemName:"person.fill")
+                    }
+            }
+            .tag(1)
+            
+            
         }
-        .padding()
+        .accentColor(Color(hue: 0.897, saturation: 0.891, brightness: 0.924, opacity: 0.954))
+       
+        }
     }
-}
 
+ 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

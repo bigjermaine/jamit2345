@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseCore
 
+
+   
 @main
 struct jamitApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            signin()
         }
     }
+    
 }
