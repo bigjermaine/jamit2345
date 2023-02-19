@@ -14,19 +14,22 @@ struct onlineRecordlist: View {
     var body: some View {
         NavigationView {
             ScrollView{
-                ForEach(audioRecorder.recordingsList2,id:\.self) { audio in
+                ForEach(audioRecorder.recordingsList2) { audio in
                     
                     HStack{
                         Text("\(audio.fileURL)")
                         Spacer()
                         
                         Button{
-//                            audioRecorder.deleteRecording(url: audio.fileURL)
+                            audioRecorder.deleledata(todotodelete: audio, email: eMailAdress)
                         }label: {
                             Image(systemName: "delete.left")
                         }
                         
-                        Button{                          
+                        Button{
+                         guard   let fileUrl = URL(string: audio.fileURL)
+                            else {return}
+                            audioRecorder.startPlaying(url: fileUrl)
                         }label: {
                             Image(systemName: "play.fill")
                         }
@@ -36,6 +39,10 @@ struct onlineRecordlist: View {
                 }
                 
             }
+        }
+        .onAppear {
+        audioRecorder.getpost(for: eMailAdress)
+            
         }
     }
 }

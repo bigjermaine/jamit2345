@@ -22,13 +22,10 @@ struct Recording : Equatable,Hashable {
         self.createdAt = createdAt
     }
 }
-struct Recording2 : Equatable,Hashable {
-    
+struct Recording2 : Identifiable {
+    var id:String
     let fileURL : String
     let createdAt : Date
  
-    init(fileURL: String, createdAt: Date) {
-        self.fileURL = fileURL
-        self.createdAt = createdAt
-    }
+
 }

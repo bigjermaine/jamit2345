@@ -165,6 +165,26 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
         
     }
     
+    func  deleledata(todotodelete:Recording2,email:String) {
+        let ref = email.replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: ".")
+        
+        database2.collection("users").document(ref).collection("posts").document(todotodelete.id).delete { error  in
+            if  error  == nil {
+                DispatchQueue.main.async {
+                    self.recordingsList2.removeAll { todo in
+                        return todo.id == todotodelete.id
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
     func uploadblogpostheaderimage(id:String,email:String ,image:URL,completion:@escaping(Bool)-> Void){
         
         let ref = email.replacingOccurrences(of: ".", with: "_")
@@ -208,7 +228,7 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
                             DispatchQueue.main.async {
                                 
                                 self.recordingsList2 = snapshot.documents.map{ d in
-                                    return Recording2(fileURL:d["fileURL"] as? String ?? "eee" ,
+                                    return Recording2(id: d.documentID, fileURL:d["fileURL"] as? String ?? "eee" ,
                                                      createdAt:d["createdAt"] as? Date ?? Date())
                                     
                                     
