@@ -26,6 +26,7 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
     var audioRecorder: AVAudioRecorder!
     @Published var countSec = 0
     @Published var recordingsList = [Recording]()
+    @Published var recordingsList2 = [Recording]()
     @Published var blinkingCount : Timer?
     @Published var toggleColor : Bool = false
     @Published var timerCount : Timer?
@@ -166,8 +167,8 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
         let ref = email.replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: ".")
         
-          let uploadmetadata = StorageMetadata.init()
-           uploadmetadata.contentType = "audio/mpeg"
+        let uploadmetadata = StorageMetadata.init()
+        uploadmetadata.contentType = "audio/mpeg"
         
         database.reference(withPath:"posts_headers\(ref)/\(id)").putFile(from: image, metadata:uploadmetadata) { data, error in
             guard  data != nil , error == nil else {
@@ -175,7 +176,7 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
                 return
             }
             completion(true)
-            print(data)
+            
         }
     }
     
@@ -234,10 +235,10 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
         let ref = email.replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: ".")
         let datas = [
-            "fileURL":post.fileURL ,
+            "fileURL":post.fileURL.absoluteString,
             "createdAt":post.createdAt
         ] as [String : Any]
-        database2.collection("users").document(ref).collection("posts").document("\(String(describing: post.fileURL))")
+        database2.collection("users").document(ref).collection("posts").document("jermaine")
             .setData(datas) { error in
                 completion(error == nil)
             }
@@ -267,31 +268,39 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
     
     func uploadall(email:String,fireurl:URL,createdate:Date) {
         
-        let newpostid = createdate.formatted()
-        uploadblogpostheaderimage(id: newpostid, email:email , image:fireurl) { sucess in
+        let newpostid = UUID().uuidString
+        uploadblogpostheaderimage(id: newpostid, email:email , image:fireurl) { [weak self] sucess in
             guard sucess else {return}
             
-            self.dowloadblogpostheaderimage(id: newpostid, email: email) { urls in
+            self?.dowloadblogpostheaderimage(id: newpostid, email: email) { urls in
                 guard let headerurl = urls else {return}
-                
+                print(headerurl)
                 let post = Recording(fileURL: headerurl, createdAt: createdate)
-                
-                self.insertblogpost(post: post, email: email) { posted in
+                print(post)
+                //
+                self?.insertblogpost(post: post, email: email) { posted in
                     guard posted else {return}
+                    
                 }
                 
-                
-                
-                
-                
             }
+            
         }
     }
-    
 }
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         

@@ -19,11 +19,11 @@
 		181BB88029A1491600764EEF /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB87F29A1491600764EEF /* FirebaseMessaging */; };
 		181BB88229A1491600764EEF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB88129A1491600764EEF /* FirebaseStorage */; };
 		181BB88429A1491600764EEF /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB88329A1491600764EEF /* FirebaseStorageCombine-Community */; };
+		187F898D29A24FC0007124AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187F898C29A24FBF007124AA /* GoogleService-Info.plist */; };
 		1881804329A09FE000B3095E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881804229A09FE000B3095E /* Extensions.swift */; };
 		1881808529A0E2C600B3095E /* Profileview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881808429A0E2C600B3095E /* Profileview.swift */; };
 		1881808929A0EC4300B3095E /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881808829A0EC4300B3095E /* Signup.swift */; };
 		1881808B29A0EC7900B3095E /* Signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881808A29A0EC7900B3095E /* Signin.swift */; };
-		1889C42F29A15006009DCA9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1889C42E29A15005009DCA9F /* GoogleService-Info.plist */; };
 		18EE927E299FF586008F7E09 /* jamitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE927D299FF586008F7E09 /* jamitApp.swift */; };
 		18EE9280299FF586008F7E09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE927F299FF586008F7E09 /* ContentView.swift */; };
 		18EE9282299FF588008F7E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EE9281299FF588008F7E09 /* Assets.xcassets */; };
@@ -37,11 +37,11 @@
 
 /* Begin PBXFileReference section */
 		181BB86C29A13EB000764EEF /* settingsview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsview.swift; sourceTree = "<group>"; };
+		187F898C29A24FBF007124AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1881804229A09FE000B3095E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1881808429A0E2C600B3095E /* Profileview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profileview.swift; sourceTree = "<group>"; };
 		1881808829A0EC4300B3095E /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		1881808A29A0EC7900B3095E /* Signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signin.swift; sourceTree = "<group>"; };
-		1889C42E29A15005009DCA9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18EE927A299FF586008F7E09 /* jamit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jamit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EE927D299FF586008F7E09 /* jamitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jamitApp.swift; sourceTree = "<group>"; };
 		18EE927F299FF586008F7E09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,7 +79,6 @@
 		1881804129A09FC700B3095E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1889C42E29A15005009DCA9F /* GoogleService-Info.plist */,
 				1881804229A09FE000B3095E /* Extensions.swift */,
 			);
 			path = Extensions;
@@ -104,6 +103,7 @@
 		18EE927C299FF586008F7E09 /* jamit */ = {
 			isa = PBXGroup;
 			children = (
+				187F898C29A24FBF007124AA /* GoogleService-Info.plist */,
 				1881804129A09FC700B3095E /* Extensions */,
 				18EE92A229A0489B008F7E09 /* Components */,
 				18EE928E299FF7C6008F7E09 /* Views */,
@@ -246,7 +246,7 @@
 			files = (
 				18EE9285299FF588008F7E09 /* Preview Assets.xcassets in Resources */,
 				18EE9282299FF588008F7E09 /* Assets.xcassets in Resources */,
-				1889C42F29A15006009DCA9F /* GoogleService-Info.plist in Resources */,
+				187F898D29A24FC0007124AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
