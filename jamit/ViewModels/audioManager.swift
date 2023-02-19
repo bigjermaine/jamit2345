@@ -227,18 +227,19 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
     
     public func insertblogpost(
         post:Recording,
-        email:String,
+        email:String,id:String,
         completion: @escaping (Bool) -> Void
         
         
     ){
+        let  documentid = post.fileURL.absoluteString
         let ref = email.replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: ".")
         let datas = [
             "fileURL":post.fileURL.absoluteString,
             "createdAt":post.createdAt
         ] as [String : Any]
-        database2.collection("users").document(ref).collection("posts").document("jermaine")
+        database2.collection("users").document(ref).collection("posts").document(id)
             .setData(datas) { error in
                 completion(error == nil)
             }
@@ -278,7 +279,7 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
                 let post = Recording(fileURL: headerurl, createdAt: createdate)
                 print(post)
                 //
-                self?.insertblogpost(post: post, email: email) { posted in
+                self?.insertblogpost(post: post, email: email, id: newpostid) { posted in
                     guard posted else {return}
                     
                 }
