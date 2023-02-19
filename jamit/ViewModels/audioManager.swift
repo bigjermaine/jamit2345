@@ -164,7 +164,15 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
         }
         
     }
-    
+    func updatadata(todotodelete:Recording2,email:String)  {
+        let ref = email.replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: ".")
+        
+        database2.collection("users").document(ref).collection("posts").document(todotodelete.id).setData(["fileURL":"rrrr"],merge: true)
+        
+        
+        
+    }
     func  deleledata(todotodelete:Recording2,email:String) {
         let ref = email.replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: ".")
