@@ -9,7 +9,18 @@ import Foundation
 import UIKit
 import SwiftUI
 
+///userdefaults to string
+extension UserDefaults {
 
+    func setValue(value: String, key: String) {
+        set(value, forKey: key)
+        synchronize()
+    }
+
+    func getValue(key: String) -> String {
+        return string(forKey: key) ?? "nigeria"
+    }
+}
 ///Blur effect on the bottom bar
 struct Blur: UIViewRepresentable {
     var style: UIBlurEffect.Style = .systemChromeMaterial

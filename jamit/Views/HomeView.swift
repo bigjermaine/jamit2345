@@ -113,6 +113,12 @@ struct HomeView: View {
                         ).font(.title2)
                             .menuStyle(RedMenuStyle())
                     }
+                    ToolbarItem(placement:.navigationBarLeading) {
+                        NavigationLink("\(Image(systemName: "music.mic.circle.fill"))", destination:   onlineRecordlist()
+                                       
+                        ).font(.title2)
+                            .menuStyle(RedMenuStyle())
+                    }
                     
                 }
                 .navigationTitle("Home")

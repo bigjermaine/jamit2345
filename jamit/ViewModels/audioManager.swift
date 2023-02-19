@@ -26,17 +26,20 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
     var audioRecorder: AVAudioRecorder!
     @Published var countSec = 0
     @Published var recordingsList = [Recording]()
-    @Published var recordingsList2 = [Recording]()
+    @Published var recordingsList2 = [Recording2]()
     @Published var blinkingCount : Timer?
     @Published var toggleColor : Bool = false
     @Published var timerCount : Timer?
     @Published var timer : String = "0:00"
     private let database2 = Firestore.firestore()
     private let database = Storage.storage()
-    
+    let jermaine = UserDefaults.standard.getValue(key:"email")
     override init() {
         super.init()
         fetchRecordings()
+       
+        self.getpost(for:jermaine)
+        
     }
     
     
@@ -191,40 +194,37 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
     }
     
     func getpost(
-        for email:String,
-        completion: @escaping ([Recording]) -> Void
-    ){
-        let ref = email.replacingOccurrences(of: ".", with: "_")
-            .replacingOccurrences(of: "@", with: ".")
-        database2.collection("users")
-            .document(ref)
-            .collection("posts")
-            .getDocuments { snapshot, error in
-                guard let documents = snapshot?.documents.compactMap({$0.data()})
-                        ,error == nil else {return}
-                
-                let posts: [Recording] = documents.compactMap({ dictionary in
-                    
-                    guard
-                        let fileURL = dictionary["fileURL"]as? String,
-                        let createdAt = dictionary["createdAt"]as? Date
-                    else {
-                        return nil
+        for email:String) {
+            let ref = email.replacingOccurrences(of: ".", with: "_")
+                .replacingOccurrences(of: "@", with: ".")
+            database2.collection("users")
+                .document(ref)
+                .collection("posts")
+                .getDocuments { snapshot, error in
+                    if error == nil {
+                        
+                        if let snapshot = snapshot {
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.recordingsList2 = snapshot.documents.map{ d in
+                                    return Recording2(fileURL:d["fileURL"] as? String ?? "eee" ,
+                                                     createdAt:d["createdAt"] as? Date ?? Date())
+                                    
+                                    
+                                }
+                                
+                            }
+                            
+                        }else  {
+                            
+                        }
                     }
                     
-                    
-                    let post =  Recording(fileURL: URL(string: fileURL)!, createdAt: createdAt)
-                    
-                    
-                    return post
-                })
-                completion(posts)
-                print(posts[0])
-                
-            }
-    }
-    
-    
+                }
+            
+            
+        }
     public func insertblogpost(
         post:Recording,
         email:String,id:String,
@@ -232,7 +232,7 @@ class AudioRecorder2: NSObject, ObservableObject , AVAudioPlayerDelegate  {
         
         
     ){
-        let  documentid = post.fileURL.absoluteString
+      
         let ref = email.replacingOccurrences(of: ".", with: "_")
             .replacingOccurrences(of: "@", with: ".")
         let datas = [

@@ -9,11 +9,36 @@ import SwiftUI
 
 struct onlineRecordlist: View {
     @ObservedObject var audioRecorder = AudioRecorder2()
+    @AppStorage("email") var eMailAdress = "user@domain.com"
+  
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView{
+                ForEach(audioRecorder.recordingsList2,id:\.self) { audio in
+                    
+                    HStack{
+                        Text("\(audio.fileURL)")
+                        Spacer()
+                        
+                        Button{
+//                            audioRecorder.deleteRecording(url: audio.fileURL)
+                        }label: {
+                            Image(systemName: "delete.left")
+                        }
+                        
+                        Button{                          
+                        }label: {
+                            Image(systemName: "play.fill")
+                        }
+                        
+                        
+                    }
+                }
+                
+            }
+        }
     }
 }
-
 struct onlineRecordlist_Previews: PreviewProvider {
     static var previews: some View {
         onlineRecordlist()
