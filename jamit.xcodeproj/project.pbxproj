@@ -19,6 +19,7 @@
 		181BB88029A1491600764EEF /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB87F29A1491600764EEF /* FirebaseMessaging */; };
 		181BB88229A1491600764EEF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB88129A1491600764EEF /* FirebaseStorage */; };
 		181BB88429A1491600764EEF /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 181BB88329A1491600764EEF /* FirebaseStorageCombine-Community */; };
+		181DEFD629A270670050D77A /* onlineRecordlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DEFD529A270670050D77A /* onlineRecordlist.swift */; };
 		187F898D29A24FC0007124AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187F898C29A24FBF007124AA /* GoogleService-Info.plist */; };
 		1881804329A09FE000B3095E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881804229A09FE000B3095E /* Extensions.swift */; };
 		1881808529A0E2C600B3095E /* Profileview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881808429A0E2C600B3095E /* Profileview.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		181BB86C29A13EB000764EEF /* settingsview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsview.swift; sourceTree = "<group>"; };
+		181DEFD529A270670050D77A /* onlineRecordlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onlineRecordlist.swift; sourceTree = "<group>"; };
 		187F898C29A24FBF007124AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1881804229A09FE000B3095E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1881808429A0E2C600B3095E /* Profileview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profileview.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				1881808829A0EC4300B3095E /* Signup.swift */,
 				1881808A29A0EC7900B3095E /* Signin.swift */,
 				181BB86C29A13EB000764EEF /* settingsview.swift */,
+				181DEFD529A270670050D77A /* onlineRecordlist.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				1881808529A0E2C600B3095E /* Profileview.swift in Sources */,
 				18EE92A629A04AC6008F7E09 /* audioManager.swift in Sources */,
 				18EE92AC29A056C0008F7E09 /* RecordlistView.swift in Sources */,
+				181DEFD629A270670050D77A /* onlineRecordlist.swift in Sources */,
 				1881808B29A0EC7900B3095E /* Signin.swift in Sources */,
 				18EE92A129A04683008F7E09 /* Microphone.swift in Sources */,
 				18EE92A829A04B42008F7E09 /* RecordingModel.swift in Sources */,
